@@ -1,3 +1,26 @@
 class Toy < ApplicationRecord
-  belongs_to :user
+  CATEGORIES = %w[Action\ figures
+                  Arts\ and\ Crafts
+                  Books
+                  Building\ &\ Construction
+                  Collectable
+                  Costumes
+                  Dolls
+                  Educational
+                  Games\ &\ Puzzles
+                  Infant\ Toys
+                  Miscellaneous
+                  Music
+                  Plush
+                  Ride\ Ons
+                  Sports
+                  Vehicles
+                ]
+
+  # belongs_to :user
+  # has_many :bookings
+  validates :name, presence: true, length: { minimum: 5 }
+  validates :description, presence: true, length: { minimum: 10 }
+  validates :category, presence: true, inclusion: { in: CATEGORIES }
+
 end
