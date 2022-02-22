@@ -23,49 +23,9 @@
     </div>
   </div>
 
-  <div class="card-toy">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-    <div class="card-toy-infos">
-      <div>
-        <h2>HORSE RAISE</h2>
-        <p>Short description here!</p>
-      </div>
-      <h2 class="card-toy-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
-    </div>
-  </div>
-
-  <div class="card-toy">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-    <div class="card-toy-infos">
-      <div>
-        <h2>MONOPOLY</h2>
-        <p>Short description here!</p>
-      </div>
-      <h2 class="card-toy-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
-    </div>
-  </div>
-
-  <div class="card-toy">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-    <div class="card-toy-infos">
-      <div>
-        <h2>MONOPOLY</h2>
-        <p>Short description here!</p>
-      </div>
-      <h2 class="card-toy-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
-    </div>
-  </div>
-
-</div>
-
-
-<div class="card-toy">
-    <% @toys.all.each do |toy| %>
-       <div class="cards">
-        <img src="<%= cl_image_tag @toy.photo.key, height: 300, width: 400, crop: :fill %>" />
+ <% @toys.all.each do |toy| %>
+    <div class="card-toy">
+      <%= cl_image_tag toy.photo.key, class: "toy_photo" %>
         <div class="card-toy-infos">
           <div>
             <h2><%= toy.name %></h2>
@@ -75,5 +35,5 @@
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
         </div>
       </div>
-    <% end %>
+ <% end %>
 </div>
