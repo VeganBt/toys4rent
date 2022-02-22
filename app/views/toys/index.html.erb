@@ -23,7 +23,7 @@
     </div>
   </div>
 
- <% @toys.all.each do |toy| %>
+ <% @toys.each do |toy| %>
     <div class="card-toy">
       <%= cl_image_tag toy.photo.key, class: "toy_photo" %>
         <div class="card-toy-infos">

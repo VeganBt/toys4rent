@@ -1,0 +1,17 @@
+.container {
+  padding-bottom: 20px;
+  color: #094209;
+  .wrapper {
+    display:flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    button, .book-btn {
+      color: rgb(245, 239, 239);
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+}

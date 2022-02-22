@@ -20,6 +20,10 @@ class ToysController < ApplicationController
     end
   end
 
+  def show
+    @toy = Toy.find(params[:id])
+  end
+
   private
 
   def toy_params
