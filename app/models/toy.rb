@@ -17,8 +17,10 @@ class Toy < ApplicationRecord
                   Vehicles
                 ]
 
-  # belongs_to :user
-  # has_many :bookings
+  belongs_to :user
+  has_one_attached :photo
+  has_many :bookings, dependent: :destroy
+
   validates :name, presence: true, length: { minimum: 5 }
   validates :description, presence: true, length: { minimum: 10 }
   validates :category, presence: true, inclusion: { in: CATEGORIES }
