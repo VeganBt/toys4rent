@@ -7,23 +7,6 @@ class ToysController < ApplicationController
 
   def new
     @toy = Toy.new
-
-    @categories = %w[Action\ figures
-                     Arts\ and\ Crafts
-                     Books
-                     Building\ &\ Construction
-                     Collectable
-                     Costumes
-                     Dolls
-                     Educational
-                     Games\ &\ Puzzles
-                     Infant\ Toys
-                     Miscellaneous
-                     Music
-                     Plush
-                     Ride\ Ons
-                     Sports
-                     Vehicles]
   end
 
   def create

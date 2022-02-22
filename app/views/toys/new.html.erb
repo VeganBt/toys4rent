@@ -6,7 +6,7 @@
       <%= simple_form_for(@toy) do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>
-        <%= f.input :category, collection: @categories, include_blank: false %>
+        <%= f.input :category, collection: Toy::CATEGORIES, include_blank: false %>
         <%= f.input :photo, as: :file %>
         <%= f.submit "Register toy", class: "btn btn-success text-center" %>
       <% end %>
