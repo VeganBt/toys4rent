@@ -28,7 +28,7 @@ class ToysController < ApplicationController
 
   def create
     @toy = Toy.new(toy_params)
-    # @toy.user = current_user
+    @toy.user = current_user
     if @toy.save
       redirect_to root_path
     else
