@@ -13,30 +13,31 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.toy = Toy.find(params[:toy_id])
+    @toy = Toy.find(params[:toy_id])
+    @booking.toy = @toy
     if @booking.save
       redirect_to root_path # TODO: change this to the correct path
     else
       render :new
     end
+  end
 
-    def show
-    end
+  def show
+  end
 
-    def destroy
-      @booking.destroy
+  def destroy
+    @booking.destroy
+    redirect_to root_path # TODO: change this to the correct path
+  end
+
+  def edit
+  end
+
+  def update
+    if @booking.update(booking_params)
       redirect_to root_path # TODO: change this to the correct path
-    end
-
-    def edit
-    end
-
-    def update
-      if @booking.update(booking_params)
-        redirect_to root_path # TODO: change this to the correct path
-      else
-        render :new
-      end
+    else
+      render :new
     end
   end
 
