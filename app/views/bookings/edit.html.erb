@@ -1,0 +1,15 @@
+<div class="container pt-3">
+  <div class="row justify-content-center ">
+    <h3 class="text-center pb-2">Edit your booking</h3>
+    <div class="col-12 col-md-6 col-lg-4 mb-3 bg-success bg-gradient bg-opacity-10 p-4">
+      <h4 class="text-center"><%= @toy.name %></h4>
+      <%= cl_image_tag @toy.photo.key, class: "img-thumbnail toy-image"  if @toy.photo %>
+      <p>from <%= "#{@toy.user.first_name} #{@toy.user.last_name}" %></p>
+      <%= simple_form_for [ @toy, @booking ] do |f| %>
+        <%= f.input :start_date, as: :date, html5: true %>
+        <%= f.input :end_date, as: :date, html5: true  %>
+        <%= f.submit "Update booking!", class: "btn btn-success text-center w-100" %>
+      <% end %>
+    </div>
+  </div>
+</div>

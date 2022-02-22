@@ -33,10 +33,11 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking.status = "pending"
     if @booking.update(booking_params)
-      redirect_to root_path # TODO: change this to the correct path
+      redirect_to bookings_path
     else
-      render :new
+      render :edit
     end
   end
 
