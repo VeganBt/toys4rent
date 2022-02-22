@@ -16,8 +16,7 @@ class BookingsController < ApplicationController
     @toy = Toy.find(params[:toy_id])
     @booking.toy = @toy
     if @booking.save
-      redirect_to root_path # TODO: change this to the correct path
-    else
+      redirect_to bookings_path
       render :new
     end
   end
