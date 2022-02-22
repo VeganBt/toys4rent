@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @toy = Toy.find(params[:toy_id])
   end
 
   def create
