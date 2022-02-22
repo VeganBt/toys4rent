@@ -1,7 +1,15 @@
-<div class="container">
+<div class="container pt-3">
+  <div class="row justify-content-center ">
+    <h2 class="text-center pb-2">Register your toy to rent it out!</h2>
 
-  <h1>Let's create a new toy!</h1>
-
-  <%= current_user.first_name %>
-
+    <div class="col-12 col-md-6 col-lg-6">
+      <%= simple_form_for(@toy) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :category, collection: @categories, include_blank: false %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit "Register toy", class: "btn btn-success text-center" %>
+      <% end %>
+    </div>
+  </div>
 </div>
