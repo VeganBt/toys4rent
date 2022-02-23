@@ -4,37 +4,23 @@
 <div class="box">
     <div class="request">
       <h2>Request are waiting</h2>
-
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <% @bookings.all.each do |booking| %>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
           <div class="card-product-infos">
             <div class="card-text">
-              <h5>Toy name</h5>
-              <p>Toy category with <strong>relevant info</strong> only.</p>
+              <h5><%= booking.toy.name %></h5>
+              <p><%= booking.toy.category %></p>
+              <p><%= booking.toy.description %></p>
             </div>
             <div class="btn-on-the-side">
               <a class="btn btn-flat" href="#">Accept</a>
               <a class="btn btn-gradient" href="#">Decline</a>
             </div>
           </div>
-      </div>
-
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <div class="card-text">
-              <h5>Toy name</h5>
-              <p>Toy category with <strong>relevant info</strong> only.</p>
-            </div>
-            <div class="btn-on-the-side">
-              <a class="btn btn-flat" href="#">Accept</a>
-              <a class="btn btn-gradient" href="#">Decline</a>
-            </div>
-          </div>
-      </div>
+        </div>
+      <%end %>
     </div>
-
-
 
     <div class="booking-recently">
       <h2>Your booking recently</h2>
@@ -43,19 +29,12 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
             <div class="card-product-infos">
               <h5><%= booking.toy.name %></h5>
-              <p><%= booking.user.first_name %></p>
-              <p>Start date: <%=booking.start_date %>, End date: <%=booking.end_date%> </p>
+              <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+              <p>Status recently: <%= booking.status %>
+              <p>Start date: <%=booking.start_date.strftime("%D") %>, End date: <%=booking.end_date.strftime("%D")%> </p>
             </div>
         </div>
       <%end %>
-
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h5>Toy name</h5>
-            <p>Start date: 12/22/3333,End date: <%=  %> </p>
-          </div>
-      </div>
     </div>
 
 

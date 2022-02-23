@@ -9,6 +9,10 @@ body.bookings.index {
     text-align: center;
   }
 
+  h5 {
+    margin-bottom: 10px;
+  }
+
   .request {
     max-width: 50%;
   }
@@ -17,4 +21,10 @@ body.bookings.index {
     margin-bottom: 10px;
     border-radius: 2px;
   }
+
+  .card-product-infos p {
+    line-height: 0.1;
+  }
+
+
 }
