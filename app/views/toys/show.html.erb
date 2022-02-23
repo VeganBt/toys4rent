@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="wrapper mt-3 mb-3">
+    <div class="img-container">
+      <!--<img src="https://kitt.lewagon.com/placeholder/users/krokrob" />-->
+      <%= cl_image_tag @toy.photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
+    <div class="content-container">
+    <span><%= @toy.category.upcase %></span>
+      <h2> <%= @toy.name %></h2>
+      <p><i class="fa fa-solid fa-euro-sign"></i>55</p>
+      <%= link_to 'Book this toy!', new_toy_booking_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
+
+      <h3>A bit more about this toy</h3>
+      <p><%= @toy.description %></p>
+
+    </div>
+  </div>
+
+
+    <%= link_to 'Back to Toy list', toys_path %>
+</div>
