@@ -17,13 +17,13 @@ class Booking < ApplicationRecord
   private
 
   def valid_start_date?
-    if start_date < Date.today
+    if start_date.nil? || start_date < Date.today
       errors.add(:start_date, "should be today or in the future")
     end
   end
 
   def valid_end_date?
-    if end_date < start_date
+    if end_date.nil? || end_date < start_date
       errors.add(:end_date, "should be greater than the start date")
     end
   end
