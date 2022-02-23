@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, except: [:new, :create]
+  resources :bookings, except: [:new, :create] do
+    member do
+      patch :update_status
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

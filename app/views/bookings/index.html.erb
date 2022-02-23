@@ -4,29 +4,41 @@
 <div class="box">
     <div class="request">
       <h2>Request are waiting</h2>
-      <% @bookings.all.each do |booking| %>
+      <% @user.toys.each do |toy| %>
+       <% toy.bookings.each do |booking| %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
           <div class="card-product-infos">
             <div class="card-text">
               <h5><%= booking.toy.name %></h5>
               <p><%= booking.toy.category %></p>
               <p><%= booking.toy.description %></p>
+              <p>From: <%=booking.user.first_name%> <%=booking.user.last_name%></p>
+              <p>Date: <%=booking.start_date.strftime("%D")%> till <%= booking.end_date.strftime("%D")%>
             </div>
             <div class="btn-on-the-side">
-              <a class="btn btn-flat" href="#">Accept</a>
-              <a class="btn btn-gradient" href="#">Decline</a>
+              <% if booking.status == "pending"%>
+                <%= link_to 'Accept', update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, class: 'btn btn-flat'%>
+                <%= link_to 'Decline', update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, class: 'btn btn-gradient'%>
+              <% elsif booking.status == "accepted"%>
+                <p>status:  ✅ </p>
+              <% else %>
+                <p>status: ❌ </p>
+              <%end %>
             </div>
+
+
           </div>
         </div>
+        <%end %>
       <%end %>
     </div>
 
     <div class="booking-recently">
       <h2>Your booking recently</h2>
-      <% @bookings.all.each do |booking| %>
+      <% @user.bookings.each do |booking| %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+           <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
             <div class="card-product-infos">
               <h5><%= booking.toy.name %></h5>
               <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>

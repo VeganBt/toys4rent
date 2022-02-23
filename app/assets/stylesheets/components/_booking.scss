@@ -10,21 +10,33 @@ body.bookings.index {
   }
 
   h5 {
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    margin-top: 6px;
   }
 
-  .request {
-    max-width: 50%;
-  }
 
   .card-product {
     margin-bottom: 10px;
     border-radius: 2px;
+    justify-content: space-between;
   }
 
-  .card-product-infos p {
-    line-height: 0.1;
+  .request .card-text {
+    line-height: 0.5em;
+    p {
+      margin-bottom: 0.1em;
+    }
   }
 
+  .request .card-product-infos {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-on-the-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
 }

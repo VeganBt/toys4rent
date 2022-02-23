@@ -80,16 +80,14 @@
 
 .card-product p {
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 0.8;
   opacity: .7;
-  margin-bottom: 16px;
-  margin-top: 8px;
   text-align: left;
   padding: 5px;
 }
 
 .card-product .card-product-infos {
-  padding: 16px;
+  padding: 12px;
 }
 
 @media(max-width: 992px) {
