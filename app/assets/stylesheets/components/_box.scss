@@ -1,8 +1,6 @@
 .box {
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: stretch;
-}
-.btn-on-the-side{
-  padding-top: 20px;
+  padding-bottom: 10px;
 }
