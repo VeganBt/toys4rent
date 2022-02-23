@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :update, :show, :destroy]
 
   def index
-    @bookings = Booking.all
+    @user = current_user
   end
 
   def new
@@ -33,6 +33,14 @@ class BookingsController < ApplicationController
   def edit
   end
 
+  def update_status
+    @booking = Booking.find(params[:id])
+    # new_status = params[:status]
+    # @booking.update(status: new_status)
+    @booking.update(booking_params)
+    redirect_to bookings_path
+  end
+
   def update
     @booking.status = "pending"
     if @booking.update(booking_params)
@@ -45,7 +53,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 
   def set_booking
@@ -53,3 +61,7 @@ class BookingsController < ApplicationController
     @toy = @booking.toy
   end
 end
+
+{ booking: {
+
+}}

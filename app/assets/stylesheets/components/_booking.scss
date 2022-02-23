@@ -1,0 +1,42 @@
+body.bookings.index {
+  h1 {
+    text-align: center;
+    color: rgb(9, 66, 9);
+    text-transform: capitalize;
+
+  }
+  h2 {
+    text-align: center;
+  }
+
+  h5 {
+    margin-bottom: 6px;
+    margin-top: 6px;
+  }
+
+
+  .card-product {
+    margin-bottom: 10px;
+    border-radius: 2px;
+    justify-content: space-between;
+  }
+
+  .request .card-text {
+    line-height: 0.5em;
+    p {
+      margin-bottom: 0.1em;
+    }
+  }
+
+  .request .card-product-infos {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-on-the-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+}

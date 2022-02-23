@@ -1,0 +1,54 @@
+
+<h1>Personal overview</h1>
+
+<div class="box">
+    <div class="request">
+      <h2>Request are waiting</h2>
+      <% @user.toys.each do |toy| %>
+       <% toy.bookings.each do |booking| %>
+        <div class="card-product">
+          <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+          <div class="card-product-infos">
+            <div class="card-text">
+              <h5><%= booking.toy.name %></h5>
+              <p><%= booking.toy.category %></p>
+              <p><%= booking.toy.description %></p>
+              <p>From: <%=booking.user.first_name%> <%=booking.user.last_name%></p>
+              <p>Date: <%=booking.start_date.strftime("%D")%> till <%= booking.end_date.strftime("%D")%>
+            </div>
+            <div class="btn-on-the-side">
+              <% if booking.status == "pending"%>
+                <%= link_to 'Accept', update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, class: 'btn btn-flat'%>
+                <%= link_to 'Decline', update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, class: 'btn btn-gradient'%>
+              <% elsif booking.status == "accepted"%>
+                <p>status:  ✅ </p>
+              <% else %>
+                <p>status: ❌ </p>
+              <%end %>
+            </div>
+
+
+          </div>
+        </div>
+        <%end %>
+      <%end %>
+    </div>
+
+    <div class="booking-recently">
+      <h2>Your booking recently</h2>
+      <% @user.bookings.each do |booking| %>
+        <div class="card-product">
+           <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+            <div class="card-product-infos">
+              <h5><%= booking.toy.name %></h5>
+              <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+              <p>Status recently: <%= booking.status %>
+              <p>Start date: <%=booking.start_date.strftime("%D") %>, End date: <%=booking.end_date.strftime("%D")%> </p>
+            </div>
+        </div>
+      <%end %>
+    </div>
+
+
+
+</div>
