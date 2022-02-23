@@ -1,5 +1,5 @@
 <div class="cards">
-  <div class="card-toy">
+  <!--<div class="card-toy">
     <img src="https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07W4FSNL5&Format=_SL500_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=monopolyland-20&language=en_US" />
     <div class="card-toy-infos">
       <div>
@@ -21,19 +21,21 @@
       <h2 class="card-toy-pricing">£99.99</h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
     </div>
-  </div>
+  </div>-->
 
  <% @toys.each do |toy| %>
-    <div class="card-toy">
-      <%= cl_image_tag toy.photo.key, class: "toy_photo" %>
-        <div class="card-toy-infos">
-          <div>
-            <h2><%= toy.name %></h2>
-            <p><%= toy.description %></p>
+  <%= link_to toy_path(toy), id: 'toy' do %>
+      <div class="card-toy">
+        <%= cl_image_tag toy.photo.key, class: "toy_photo" %>
+          <div class="card-toy-infos">
+            <div>
+              <h2><%= toy.name %></h2>
+              <p><%= toy.description %></p>
+            </div>
+            <h2 class="card-toy-pricing">£0.99</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
           </div>
-          <h2 class="card-toy-pricing">£0.99</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
-        </div>
       </div>
+  <% end %>
  <% end %>
 </div>
