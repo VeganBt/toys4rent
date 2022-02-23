@@ -1,5 +1,6 @@
 class ToysController < ApplicationController
   before_action :set_toy, only: [:edit, :update]
+  # skip_before_action :authenticate_user!, only: :index
 
   def index
     @toys = Toy.all
@@ -17,6 +18,10 @@ class ToysController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @toy = Toy.find(params[:id])
   end
 
   private
