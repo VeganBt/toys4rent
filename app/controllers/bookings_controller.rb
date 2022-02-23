@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
     @booking.toy = @toy
     if @booking.save
       redirect_to bookings_path
+    else
       render :new
     end
   end
