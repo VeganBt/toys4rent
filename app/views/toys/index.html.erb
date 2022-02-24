@@ -28,8 +28,18 @@
               <h2 class="card-toy-pricing">£0.99</h2>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
             </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</body>
+            <h2 class="card-toy-pricing">£0.99</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
+          </div>
+      </div>
+  <% end %>
+ <% end %>
+</div>
+
+<!-- Map basic templaye -->
+
+<div id="toys-map"
+  data-controller="mapbox"
+  data-mapbox-markers-value="<%= @markers.to_json %>"
+  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
