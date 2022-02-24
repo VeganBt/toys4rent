@@ -3,7 +3,7 @@
   color: #333;
 
 }
-h1 {
+.toys h1 {
   padding-top: 20px;
   padding-bottom: 16px;
   text-align: center;
@@ -14,10 +14,29 @@ h1 {
 }
 .toys {
   background-color:  #aad576;
-  .card-toy-infos {
-    background-color: #F2E8CF;
+  .cards {
+    a:nth-child(4n+1) {
+      .card-toy-infos {
+        background-color: $honeydew;
+      }
+    }
+    a:nth-child(4n+2) {
+      .card-toy-infos {
+        background-color: $honeydrew;
+      }
+    }
+    a:nth-child(4n+3) {
+      .card-toy-infos {
+        background-color: $aliceblue;
+      }
+    }
+    a:nth-child(4n+4) {
+      .card-toy-infos {
+        background-color: $pink;
+      }
+    }
   }
-  .container {
+  .search-container {
     width: 40%;
   }
 }
