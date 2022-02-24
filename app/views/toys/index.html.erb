@@ -16,25 +16,22 @@
 
 
   <div class="cards">
-  <% @toys.each do |toy| %>
-    <%= link_to toy_path(toy), id: 'toy' do %>
+    <% @toys.each do |toy| %>
+      <%= link_to toy_path(toy), id: 'toy' do %>
         <div class="card-toy">
           <%= cl_image_tag toy.photo.key, class: "toy_photo" if toy.photo.key%>
-            <div class="card-toy-infos">
-              <div>
-                <h2><%= toy.name %></h2>
-                <p><%= toy.category %></p>
-              </div>
-              <h2 class="card-toy-pricing">£0.99</h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
+          <div class="card-toy-infos">
+            <div>
+              <h2><%= toy.name %></h2>
+              <p><%= toy.category %></p>
             </div>
             <h2 class="card-toy-pricing">£0.99</h2>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
           </div>
-      </div>
-  <% end %>
- <% end %>
-</div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
 <!-- Map basic templaye -->
 
