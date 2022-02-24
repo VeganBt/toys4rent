@@ -22,14 +22,23 @@ end_dates = dates.map { |date| date + 4 }
 puts "Creating 3 users...\n"
 
 users = 3.times.each_with_object([]) do |index, arr|
-  arr << User.create!(
+  arr << user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
     email: "user#{index + 1}@gmail.com",
     password: "123456",
-    password_confirmation: "123456",
+    password_confirmation: "123456"
   )
+
+  user.photo.attach(
+    io: File.open("app/assets/images/empty_account.png"),
+    filename: "empty_account.png",
+    content_type: "image/png"
+  )
+
+  user.save
+
   puts "User ##{index + 1}"
   puts "Email: user#{index + 1}@gmail.com"
   puts "Password: 123456"
