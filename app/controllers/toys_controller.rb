@@ -10,6 +10,9 @@ class ToysController < ApplicationController
         OR toys.description @@ :query \
         OR users.first_name @@ :query \
         OR users.last_name @@ :query \
+        OR users.address @@ :query \
+        OR users.city @@ :query \
+        OR users.country @@ :query \
       "
       @toys = Toy.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
