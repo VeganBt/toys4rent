@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :toys
 
+  has_one_attached :photo
+
   # Geocoding
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -25,5 +27,4 @@ class User < ApplicationRecord
       self.country = results.first.country
     end
   end
-  has_one_attached :photo
 end
