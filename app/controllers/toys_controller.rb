@@ -23,8 +23,8 @@ class ToysController < ApplicationController
     toys_with_geo = @toys.select { |toy| toy.user.geocoded? }
     @markers = toys_with_geo.map do |toy|
       {
-        lat: toy.user.latitude,
-        lng: toy.user.longitude
+        lat: toy.user.latitude ? toy.user.latitude : 0.5,
+        lng: toy.user.longitude ? toy.user.longitude : 0.5
       }
     end
   end
