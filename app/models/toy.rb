@@ -25,4 +25,15 @@ class Toy < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
   validates :category, presence: true, inclusion: { in: CATEGORIES }
 
+  # add a searchbar
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  against: [ :name, :category ],
+  associated_against: {
+    user: [ :first_name, :last_name, :address, :country, :city]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 end

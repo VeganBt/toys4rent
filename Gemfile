@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'devise'
 # Faker for seeds.rb
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+# for geocoding
+gem "geocoder"
 
 group :development, :test do
   gem 'pry-byebug'
@@ -68,3 +70,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # setup cloudinary
 gem 'cloudinary', '~> 1.16.0'
+
+# add a search bar
+gem 'pg_search', '~> 2.3.0'
