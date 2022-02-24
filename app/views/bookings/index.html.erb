@@ -1,57 +1,148 @@
+<div class="container">
 
-<h1>Personal overview</h1>
+  <div class="dashboard-banner">
+    <div class="row mt-5 dashboard-banner-box">
+      <div class="col-2">
+          <%= cl_image_tag current_user.photo.key, class: "user_avatar_large" %>
+          <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#exampleModal">Update my picture</a>
+      </div>
+      <div class="col-10 pt-3 user_info">
+      <h3> <strong> <%= current_user.first_name %> <%= current_user.last_name %> </strong></h3>
+      <p><%= current_user.address %></p>
+      </div>
+    </div>
+  </div>
 
-<div class="box">
-    <div class="request">
-      <h2>Request are waiting</h2>
-      <% @user.toys.each do |toy| %>
-       <% toy.bookings.each do |booking| %>
-        <div class="card-product">
-          <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
-          <div class="card-product-infos">
-            <div class="card-text">
-              <h5><%= booking.toy.name %></h5>
-              <p><%= booking.toy.category %></p>
-              <p><%= booking.toy.description %></p>
-              <p>From: <%=booking.user.first_name%> <%=booking.user.last_name%></p>
-              <p>Date: <%=booking.start_date.strftime("%D")%> till <%= booking.end_date.strftime("%D")%>
-              <p>Message: <%=booking.message%>
-            </div>
-            <div class="btn-on-the-side">
-              <% if booking.status == "pending"%>
-                <%= link_to 'Accept', update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, class: 'btn btn-flat'%>
-                <%= link_to 'Decline', update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, class: 'btn btn-gradient'%>
-              <% elsif booking.status == "accepted"%>
-                <p>status:  ✅ </p>
-              <% else %>
-                <p>status: ❌ </p>
-              <%end %>
-            </div>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload a picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        LINK FOR PROFILE PIC TO BE ADDED
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+
+  <div class="row">
+    <div class="my_toys">
+      <h2><strong>My toys</strong></h2>
+
+      <div class="toy_picture_container">
+        <% current_user.toys.each do |toy| %>
+          <%= link_to toy_path(toy), id: 'toy' do %>
+            <%= cl_image_tag toy.photo.key, class: "my_toys_photos" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row request-box">
+    <div class="col-4">
+        <div class="booking-recently">
+
+          <div class="bookings-column-title">
+          <h2><strong>Your bookings for toys</strong></h2>
+          </div>
+
+          <% @user.bookings.each do |booking| %>
+            <div class="card-product">
+
+              <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+
+              <div class="card-text">
+                <h5><%= booking.toy.name %></h5>
+                <p>Status: <%= booking.status %> </p>
+                <p>Start date: <%=booking.start_date.strftime("%D") %> </p>
+                <p>End date: <%=booking.end_date.strftime("%D")%> </p>
+              </div>
+
+              <div class="btn-on-the-side">
+                <%= link_to "Cancel",
+                    update_status_booking_path(booking, { booking: { status: 'declined' },  } ),
+                    method: :patch,
+                    data: { confirm: "Are you sure?" },
+                    class: 'cancel-booking'
+                     %>
+                <%= link_to "Update", edit_booking_path(booking) %>
+              </div>
 
           </div>
-        </div>
         <%end %>
-      <%end %>
+      </div>
     </div>
 
-    <div class="booking-recently">
-      <h2>Your booking recently</h2>
-      <% @user.bookings.each do |booking| %>
-        <div class="card-booking mb-3">
-           <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
-            <div class="card-product-infos">
-              <h5><%= booking.toy.name %></h5>
-              <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-              <p>Status recently: <%= booking.status %>
-              <p>Start date: <%=booking.start_date.strftime("%D") %>, End date: <%=booking.end_date.strftime("%D")%> </p>
-              <!--<div class = "cancel-booking-btn"><button type="button" class="btn btn-gradient" style = "font-size:10px;">Cancel Booking</button></div>-->
-              <%= link_to "Cancel Booking", booking_path(booking.id), class: "cancel-booking-btn btn btn-gradient", style: 'font-size:10px;', method: :delete, data: { confirm: "Are you sure?" } %>
-            </div>
+    <div class="col-4">
+      <div class="request">
+
+        <div class="bookings-column-title">
+        <h2><strong>Bookings for your toys</strong></h2>
         </div>
-      <%end %>
+
+        <% @user.toys.each do |toy| %>
+          <% toy.bookings.where( status: 'accepted').each do |booking| %>
+            <div class="card-product">
+              <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+                <div class="card-text">
+                  <h5><%= booking.toy.name %></h5>
+                  <p> By: <%=booking.user.first_name%> <%=booking.user.last_name%>
+                  <p> From: <%= booking.start_date.strftime("%D") %> </p>
+                  <p> To: <%= booking.end_date.strftime("%D") %> </p>
+                </div>
+
+                <div class="btn-on-the-side">
+                    <h5> Accepted </h5>
+                    <%= link_to "Cancel", update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'cancel-booking' %>
+                </div>
+            </div>
+          <%end %>
+        <%end %>
+
+      </div>
     </div>
 
+    <div class="col-4">
+      <div class="request">
+          <div class="bookings-column-title">
+            <h2><strong>Requests for your toys</strong></h2>
+          </div>
+          <% @user.toys.each do |toy| %>
+            <% toy.bookings.where( status: 'pending').each do |booking| %>
+              <div class="card-product">
+                <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+                  <div class="card-text">
+                    <h5><%= booking.toy.name %></h5>
+                    <p> By: <%=booking.user.first_name%> <%=booking.user.last_name%>
+                    <p> From: <%= booking.start_date.strftime("%D") %> </p>
+                    <p> To: <%= booking.end_date.strftime("%D") %> </p>
+                  </div>
 
+                  <div class="btn-on-the-side">
+                    <% if booking.status == "pending"%>
+                      <%= link_to icon('fas', 'check'), update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, class: 'btn btn-flat'%>
+                      <%= link_to icon('fas', 'ban'), update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'btn btn-gradient'%>
+                    <% elsif booking.status == "accepted"%>
+                      <h5> Accepted </h5>
+                      <%= link_to "Cancel", update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'cancel-booking' %>
+                    <% else %>
+                      <h5> Declined </h5>
+                    <%end %>
+                  </div>
+              </div>
+            <%end %>
+          <%end %>
+      </div>
+    </div>
 
+  </div>
 </div>

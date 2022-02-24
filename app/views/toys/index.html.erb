@@ -1,42 +1,48 @@
-<h1>Here is your new world begin ...</h1>
 
 
-<div class="container">
-    <div class="simple-form">
-      <%= form_tag toys_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a toy that you love"
-        %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+<div class="row">
+  <div class="col-12 col-md-6 col-lg-7">
+    <h1>Here is your new world begin ...</h1>
+    <div class="d-flex justify-content-center">
+      <div class="search-container">
+        <%= form_tag toys_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a toy that you love"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="cards">
+      <% @toys.each do |toy| %>
+        <%= link_to toy_path(toy), id: 'toy' do %>
+          <div class="card-toy">
+            <%= cl_image_tag toy.photo.key, class: "toy_photo" if toy.photo.key%>
+            <div class="card-toy-infos">
+              <div>
+                <h2><%= toy.name %></h2>
+                <p><%= toy.category %></p>
+              </div>
+              <h2 class="card-toy-pricing">£0.99</h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
-</div>
-
-
-  <div class="cards">
-    <% @toys.each do |toy| %>
-      <%= link_to toy_path(toy), id: 'toy' do %>
-        <div class="card-toy">
-          <%= cl_image_tag toy.photo.key, class: "toy_photo" if toy.photo.key%>
-          <div class="card-toy-infos">
-            <div>
-              <h2><%= toy.name %></h2>
-              <p><%= toy.category %></p>
-            </div>
-            <h2 class="card-toy-pricing">£0.99</h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-toy-user avatar-bordered" />
-          </div>
-        </div>
-      <% end %>
-    <% end %>
   </div>
 
-<!-- Map basic templaye -->
 
-<div id="toys-map"
-  data-controller="mapbox"
-  data-mapbox-markers-value="<%= @markers.to_json %>"
-  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <!-- Map basic templaye -->
+  <div class="col-12 col-md-6 col-lg-5">
+    <div id="toys-map"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
 </div>

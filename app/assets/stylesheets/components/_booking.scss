@@ -17,15 +17,20 @@ body.bookings.index {
 
   .card-product {
     margin-bottom: 10px;
-    border-radius: 2px;
+    border-radius: 8px;
     justify-content: space-between;
+    background-color: $orangeyellowcrayola;
+    border: 3px solid $orangeyellowcrayola
   }
 
-  .request .card-text {
+ .card-text {
     line-height: 0.5em;
     p {
       margin-bottom: 0.1em;
+      line-height: 20px;
     }
+    flex-grow: 1;
+    padding-left: 10px;
   }
 
   .request .card-product-infos {
@@ -37,6 +42,24 @@ body.bookings.index {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    padding-right: 5px;
   }
 
+  .btn-on-the-side > h5 {
+    margin: 0;
+  }
+
+  .btn-on-the-side > a {
+    margin: 0;
+  }
+
+  .bookings-column-title {
+
+    margin: 10px auto;
+  }
+
+  .request-box {
+    background-color: $honeydew;
+    border-radius: 8px;
+  }
 }

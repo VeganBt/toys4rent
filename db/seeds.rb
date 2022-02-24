@@ -1,5 +1,6 @@
 require 'faker'
 require 'open-uri'
+require 'geocoder'
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -19,13 +20,21 @@ User.destroy_all
 dates = [Date.today, Date.tomorrow, Date.today + 2, Date.today + 3]
 end_dates = dates.map { |date| date + 4 }
 
-puts "Creating 3 users...\n"
+# Generate some REAL addresses
+addresses = []
+20.times do
+  lat = rand(52.317012577088946..52.35099853609036)
+  lng = rand(4.753977119685295..4.998079607423506)
+  addresses << Geocoder.search([lat, lng]).first.address
+end
 
-users = 3.times.each_with_object([]) do |index, arr|
+puts "Creating 5 users...\n"
+
+users = 5.times.each_with_object([]) do |index, arr|
   arr << user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.full_address,
+    address: addresses.sample,
     email: "user#{index + 1}@gmail.com",
     password: "123456",
     password_confirmation: "123456"
@@ -49,7 +58,7 @@ end
 print "Creating toys..."
 toys = []
 
-12.times do |index|
+16.times do |index|
   toy = Toy.new(
     name: "#{Faker::Games::Pokemon.name} toy",
     description: Faker::Lorem.paragraph,
