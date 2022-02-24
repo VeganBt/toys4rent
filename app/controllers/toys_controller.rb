@@ -4,14 +4,10 @@ class ToysController < ApplicationController
 
   def index
     @toys = Toy.all
-    # Map variables
-    toys_with_geo = @toys.select { |toy| toy.user.geocoded? }
-    @markers = toys_with_geo.map do |toy|
-      {
-        lat: toy.user.latitude,
-        lng: toy.user.latitude
-      }
-    end
+  end
+
+  def new
+    @toy = Toy.new
   end
 
   def create
