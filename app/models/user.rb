@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
@@ -24,4 +25,5 @@ class User < ApplicationRecord
       self.country = results.first.country
     end
   end
+  has_one_attached :photo
 end
