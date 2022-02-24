@@ -1,0 +1,41 @@
+.dashboard-banner {
+  margin-top: 100px;
+}
+
+.user_avatar_large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.dashboard-banner-box {
+  background-color: $aliceblue;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+#update_picture_link {
+  color: $cadmiumgreen;
+}
+
+.toy_picture_container {
+  text-align: center;
+}
+
+.my_toys_photos {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  margin: 15px 30px;
+
+}
+
+.my_toys {
+  margin: 20px auto;
+  background-color: $honeydew;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+}
