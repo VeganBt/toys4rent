@@ -1,7 +1,7 @@
 <h1>Here is your new world begin ...</h1>
 
 
-  <div class="container">
+<div class="container">
     <div class="simple-form">
       <%= form_tag toys_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
@@ -12,10 +12,10 @@
         <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </div>
-  </div>
+</div>
 
 
-  <div class="cards">
+<div class="cards">
   <% @toys.each do |toy| %>
     <%= link_to toy_path(toy), id: 'toy' do %>
         <div class="card-toy">
@@ -31,5 +31,4 @@
         </div>
       <% end %>
     <% end %>
-  </div>
-</body>
+</div>
