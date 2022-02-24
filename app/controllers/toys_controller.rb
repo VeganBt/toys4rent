@@ -9,7 +9,7 @@ class ToysController < ApplicationController
     @markers = toys_with_geo.map do |toy|
       {
         lat: toy.user.latitude,
-        lng: toy.user.latitude
+        lng: toy.user.longitude
       }
     end
   end
