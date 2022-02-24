@@ -25,7 +25,6 @@ class Toy < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
   validates :category, presence: true, inclusion: { in: CATEGORIES }
 
-
   # add a searchbar
 
   include PgSearch::Model
