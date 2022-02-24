@@ -15,6 +15,7 @@
               <p><%= booking.toy.description %></p>
               <p>From: <%=booking.user.first_name%> <%=booking.user.last_name%></p>
               <p>Date: <%=booking.start_date.strftime("%D")%> till <%= booking.end_date.strftime("%D")%>
+              <p>Message: <%=booking.message%>
             </div>
             <div class="btn-on-the-side">
               <% if booking.status == "pending"%>
@@ -37,13 +38,15 @@
     <div class="booking-recently">
       <h2>Your booking recently</h2>
       <% @user.bookings.each do |booking| %>
-        <div class="card-product">
+        <div class="card-booking mb-3">
            <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
             <div class="card-product-infos">
               <h5><%= booking.toy.name %></h5>
               <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
               <p>Status recently: <%= booking.status %>
               <p>Start date: <%=booking.start_date.strftime("%D") %>, End date: <%=booking.end_date.strftime("%D")%> </p>
+              <!--<div class = "cancel-booking-btn"><button type="button" class="btn btn-gradient" style = "font-size:10px;">Cancel Booking</button></div>-->
+              <%= link_to "Cancel Booking", booking_path(booking.id), class: "cancel-booking-btn btn btn-gradient", style: 'font-size:10px;', method: :delete, data: { confirm: "Are you sure?" } %>
             </div>
         </div>
       <%end %>
