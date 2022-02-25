@@ -3,12 +3,12 @@
   color: white;
   padding: 4px 12px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $cadmiumgreen;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #1BCB7F;
+  background: $cadmiumgreen;
   color: white;
 }
 
