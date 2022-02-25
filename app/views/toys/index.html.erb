@@ -21,6 +21,7 @@
         <%= link_to toy_path(toy), id: 'toy' do %>
           <div class="card-toy">
             <%= cl_image_tag toy.photo.key, class: "toy_photo" if toy.photo.key%>
+            <div class="rent-txt"><h3>Rent me!</h3></div>
             <div class="card-toy-infos">
               <div>
                 <h2><%= toy.name %></h2>
