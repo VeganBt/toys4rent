@@ -27,7 +27,7 @@ class ToysController < ApplicationController
     @toy = Toy.new(toy_params)
     @toy.user = current_user
     if @toy.save
-      redirect_to root_path
+      redirect_to bookings_path
     else
       render :new
     end
@@ -45,7 +45,7 @@ class ToysController < ApplicationController
     @toy = Toy.find(params[:id])
     @toy.update(toy_params)
 
-    redirect_to toys_path
+    redirect_to bookings_path
   end
 
   private
