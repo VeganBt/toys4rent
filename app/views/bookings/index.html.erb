@@ -146,8 +146,8 @@
                     </div>
 
                     <div class="btn-on-the-side">
-                        <%= link_to icon('fas', 'check'), update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, class: 'btn btn-flat'%>
-                        <%= link_to icon('fas', 'ban'), update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'btn btn-gradient'%>
+                        <%= link_to icon('fas', 'check'), update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, remote: true, class: 'btn btn-flat'%>
+                        <%= link_to icon('fas', 'ban'), update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, remote: true, data: { confirm: "Are you sure?" }, class: 'btn btn-gradient'%>
                     </div>
                 </div>
                 <div class="comment-link">
