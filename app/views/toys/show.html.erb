@@ -8,7 +8,12 @@
     <span><%= @toy.category.upcase %></span>
       <h2> <%= @toy.name %></h2>
       <p><i class="fa fa-solid fa-euro-sign"></i>55</p>
-      <%= link_to 'Book this toy!', new_toy_booking_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
+      <% if @toy.user == current_user %>
+        <%= link_to 'Update this toy!', edit_toy_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
+      <% else %>
+        <%= link_to 'Book this toy!', new_toy_booking_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
+      <% end %>
+
 
       <h3>A bit more about this toy</h3>
       <p><%= @toy.description %></p>

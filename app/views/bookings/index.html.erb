@@ -1,13 +1,3 @@
-<script type="text/javascript">
-
-  function myFunction() {
-    console.log("hello");   // The function returns the product of p1 and p2
-  }
-
-</script>
-
-
-
 <div class="container">
 
   <div class="row dashboard-banner">
@@ -32,7 +22,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        LINK FOR PROFILE PIC TO BE ADDED
+        <%= simple_form_for(current_user) do |f| %>
+          <%= f.input :photo, as: :file %>
+        <%= f.submit "Update photo", class: "btn btn-success text-center" %>
+      <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
