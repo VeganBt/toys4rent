@@ -33,6 +33,7 @@
 
 .toy_picture_container {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .my_toys_photos {
@@ -76,4 +77,8 @@
   -moz-transition: opacity 100ms ease-in;
   transition: opacity 100ms ease-in;
   pointer-events: none;
+}
+
+#add-toy-link {
+  text-align: center;
 }
