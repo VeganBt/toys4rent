@@ -8,12 +8,12 @@
   padding-bottom: 16px;
   text-align: center;
   font-weight: bold;
-  color: #386641;
+  color: darkgreen;
   font-family: 'Shizuru', cursive;
 
 }
 .toys {
-  background-color:  #aad576;
+  background-image: linear-gradient($orangeyellowcrayola, $pink, rgb(75, 77, 148));
   .cards {
     a:nth-child(4n+1) {
       .card-toy-infos {
