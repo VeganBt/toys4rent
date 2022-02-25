@@ -7,7 +7,7 @@
     <div class="content-container">
       <span><%= @toy.category.upcase %></span>
         <h2> <%= @toy.name %></h2>
-        <p><i class="fa fa-solid fa-euro-sign"></i>55</p>
+        <p><i class="fa fa-solid fa-euro-sign"></i> 0.99</p>
         <% if @toy.user == current_user %>
           <%= link_to 'Update this toy!', edit_toy_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
         <% else %>

@@ -4,6 +4,12 @@
   background-color: #f0f0ed5b;
   border-radius: 24px;
   padding: 32px;
+
+  img {
+    border-radius: 8px;
+    margin-right: 36px;
+  }
+
   .wrapper {
     display:flex;
     justify-content: space-around;
