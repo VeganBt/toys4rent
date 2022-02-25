@@ -12,6 +12,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+          <li class="nav-item nav-link me-2">
+            <%= link_to_unless_current "Discover Toys", toys_path, class: "" %>
+          </li>
           <li class="nav-item nav-link active me-2">
             <%= link_to_unless_current "My Dashboard", bookings_path, class: "" %>
           </li>
@@ -21,6 +24,7 @@
               <%= link_to "My Dashboard", bookings_path, class: "dropdown-item" %>
               <%= link_to "Add a Toy", new_toy_path, class: "dropdown-item" %>
               <%= link_to "Discover Toys", toys_path, class: "dropdown-item" %>
+              <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
