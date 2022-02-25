@@ -21,7 +21,7 @@ end
 
 puts "Creating 10 users...\n"
 
-users = 5.times.each_with_object([]) do |index, arr|
+users = 10.times.each_with_object([]) do |index, arr|
   arr << user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
