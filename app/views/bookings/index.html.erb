@@ -2,6 +2,7 @@
 
   <div class="dashboard-banner">
     <div class="row mt-5 dashboard-banner-box">
+      <%= link_to "Edit profile", edit_user_registration_path, class: "book-btn btn btn-lg btn-success mt-3 mb-3 edit-user" %>
       <div class="col-2">
           <%= cl_image_tag current_user.photo.key, class: "user_avatar_large" %>
           <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#exampleModal">Update my picture</a>
@@ -22,7 +23,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        LINK FOR PROFILE PIC TO BE ADDED
+        <%= simple_form_for(current_user) do |f| %>
+          <%= f.input :photo, as: :file %>
+        <%= f.submit "Update photo", class: "btn btn-success text-center" %>
+      <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
