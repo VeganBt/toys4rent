@@ -1,26 +1,33 @@
-<div class="container">
+<div class="toy-show-container">
   <div class="wrapper mt-3 mb-3">
     <div class="img-container">
       <!--<img src="https://kitt.lewagon.com/placeholder/users/krokrob" />-->
       <%= cl_image_tag @toy.photo.key, height: 300, width: 400, crop: :fill %>
     </div>
     <div class="content-container">
-    <span><%= @toy.category.upcase %></span>
-      <h2> <%= @toy.name %></h2>
-      <p><i class="fa fa-solid fa-euro-sign"></i>55</p>
-      <% if @toy.user == current_user %>
-        <%= link_to 'Update this toy!', edit_toy_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
-      <% else %>
-        <%= link_to 'Book this toy!', new_toy_booking_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
-      <% end %>
+      <span><%= @toy.category.upcase %></span>
+        <h2> <%= @toy.name %></h2>
+        <p><i class="fa fa-solid fa-euro-sign"></i>55</p>
+        <% if @toy.user == current_user %>
+          <%= link_to 'Update this toy!', edit_toy_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
+        <% else %>
+          <%= link_to 'Book this toy!', new_toy_booking_path(@toy), class: "book-btn btn btn-lg btn-success mt-3 mb-3" %>
+        <% end %>
 
 
-      <h3>A bit more about this toy</h3>
-      <p><%= @toy.description %></p>
+        <h3>A bit more about this toy</h3>
+        <p><%= @toy.description %></p>
 
     </div>
   </div>
+</div>
 
 
-    <%= link_to 'Back to Toy list', toys_path, class: "back-to-toys-btn" %>
+<div class="container">
+  <% if @toy.user == current_user %>
+    <%= link_to 'Back to Dashboard!', bookings_path %>
+  <% else %>
+    <%= link_to 'Back to Toy list', toys_path %>
+  <% end %>
+
 </div>

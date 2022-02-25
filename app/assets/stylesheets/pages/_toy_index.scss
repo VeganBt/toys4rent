@@ -75,3 +75,12 @@
     font-family: $normal-text;
   }
 }
+
+#searchbar-submit {
+  border-radius: 0 5px 5px 0;
+}
+
+#searchbar-input {
+  border: 1px solid $honeydew;
+  border-radius: 5px 0 0 5px;
+}

@@ -86,6 +86,7 @@ puts "Creating bookings..."
   )
   booking.toy = toys.sample
   booking.user = (users - [booking.toy.user]).sample
+  booking.message = "Hello, my name is #{booking.user.first_name} and I would like to book this beautiful toy from you!"
   booking.save!
 end
 

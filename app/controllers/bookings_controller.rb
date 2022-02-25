@@ -50,7 +50,7 @@ class BookingsController < ApplicationController
   def update
     @booking.status = "pending"
     if @booking.update(booking_params)
-      redirect_to bookings_path
+      redirect_to bookings_path(anchor: "request-box")
     else
       render :edit
     end

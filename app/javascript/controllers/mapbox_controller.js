@@ -12,12 +12,15 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/streets-v8",
       center: [4.9, 52.3],
       zoom: 9
     });
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
+    this.map.on('load', () => {
+      this.map.setPaintProperty('water', 'fill-color', '#dbefff');
+    });
   }
 
   #addMarkersToMap() {

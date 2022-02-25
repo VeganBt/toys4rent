@@ -2,16 +2,18 @@
 
 <div class="row">
   <div class="col-12 col-md-6 col-lg-7">
-    <h1>Here is your new world begin ...</h1>
-    <div class="d-flex justify-content-center">
+    <h1>Find toys for your child</h1>
+    <div class="d-flex justify-content-center mb-3">
       <div class="search-container">
         <%= form_tag toys_path, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Find a toy that you love"
+            placeholder: "Find a toy that you love",
+            data: { controller: 'search' },
+            id: "searchbar-input"
           %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= submit_tag "Search", class: "btn btn-info", id: "searchbar-submit" %>
         <% end %>
       </div>
     </div>
