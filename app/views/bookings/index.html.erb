@@ -22,7 +22,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        LINK FOR PROFILE PIC TO BE ADDED
+        <%= simple_form_for(current_user) do |f| %>
+          <%= f.input :photo, as: :file %>
+        <%= f.submit "Update photo", class: "btn btn-success text-center" %>
+      <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
