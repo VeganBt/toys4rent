@@ -1,10 +1,13 @@
-.container {
-  padding-bottom: 20px;
+.toy-show-container {
+  margin: 120px 60px 40px 60px;
   color: #094209;
+  background-color: #f0f0ed5b;
+  border-radius: 24px;
+  padding: 32px;
   .wrapper {
     display:flex;
     justify-content: space-around;
-    padding-top: 50px;
+    padding: 0 108px;
     button, .book-btn {
       color: rgb(245, 239, 239);
       padding: 10px 20px;
