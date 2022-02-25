@@ -1,4 +1,4 @@
-<div class="container pt-3">
+<div class="container new-toy-form pt-3">
   <div class="row justify-content-center ">
     <h2 class="text-center pb-2">Register your toy to rent it out!</h2>
 
@@ -8,7 +8,7 @@
         <%= f.input :description %>
         <%= f.input :category, collection: Toy::CATEGORIES, include_blank: false %>
         <%= f.input :photo, as: :file %>
-        <%= f.submit "Register toy", class: "btn btn-success text-center" %>
+        <%= f.submit "Register toy", class: "btn btn-success text-center w-100" %>
       <% end %>
     </div>
   </div>

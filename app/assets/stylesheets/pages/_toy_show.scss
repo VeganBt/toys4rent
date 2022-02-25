@@ -1,6 +1,9 @@
 .container {
   padding-bottom: 20px;
   color: #094209;
+  .img-container {
+    margin-bottom:20px;
+  }
   .wrapper {
     display:flex;
     justify-content: space-around;

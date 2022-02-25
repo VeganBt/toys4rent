@@ -37,3 +37,22 @@
   right: 20px;
   border-radius: 5px;
 }
+
+.back-to-toys-btn {
+  text-decoration: none;
+  border: 1px solid #fff;
+  background-color: white;
+  color: #bc4749;
+  padding: 6px 24px;
+  border-radius: 50px;
+  margin: 0px;
+  margin-top:10px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+    border:none;
+    /*border: 1px solid #f2e8cf;*/
+    background-color: #bc4749;
+  }
+}
