@@ -9,11 +9,23 @@
   border-radius: 50%;
 }
 
+
+
 .dashboard-banner-box {
+  display: flex;
   background-color: $aliceblue;
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info {
+  padding: 20px;
 }
 
 #update_picture_link {
@@ -22,6 +34,7 @@
 
 .toy_picture_container {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .my_toys_photos {
@@ -39,4 +52,34 @@
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 10px;
+}
+
+.comment-link {
+  color: $cadmiumgreen;
+  background-color: snow;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.popup {
+  display: none;
+}
+
+.comment-link:hover .popup {
+  cursor: pointer;
+  display: block;
+  /*visibility: visible; */
+  padding: 2px;
+  z-index: 999;
+  -webkit-transition: opacity 100ms ease-in;
+  -o-transition: opacity 100ms ease-in;
+  -moz-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
+  pointer-events: none;
+}
+
+#add-toy-link {
+  text-align: center;
 }
