@@ -24,5 +24,10 @@
 
 
 <div class="container">
-  <%= link_to 'Back to Toy list', toys_path %>
+  <% if @toy.user == current_user %>
+    <%= link_to 'Back to Dashboard!', bookings_path %>
+  <% else %>
+    <%= link_to 'Back to Toy list', toys_path %>
+  <% end %>
+
 </div>

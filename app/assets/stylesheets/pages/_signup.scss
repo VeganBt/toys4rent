@@ -1,4 +1,9 @@
 .sign-up-container {
+  a{
+    color:blue;
+    text-decoration: none;
+  }
+
   h2 {
     color: rgb(9, 66, 9);
   }
@@ -7,6 +12,7 @@
   .simple_form {
     a {
       text-decoration: none;
+
     }
     width: 560px;
     margin: 0 auto;
@@ -57,5 +63,11 @@
     .alert {
       display:none;
     }
+  }
+}
+
+.new-toy-form {
+  input, textarea, select {
+    border-radius:5px;
   }
 }
