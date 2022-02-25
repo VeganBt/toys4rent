@@ -2,15 +2,6 @@ require 'faker'
 require 'open-uri'
 require 'geocoder'
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-# monopoly = Toy.create([{ name: 'tala' }, { description: 'blabla' }, { category: 'easy game' }])
-
 # Create some users
 
 Booking.destroy_all
@@ -23,12 +14,12 @@ end_dates = dates.map { |date| date + 4 }
 # Generate some REAL addresses
 addresses = []
 20.times do
-  lat = rand(52.317012577088946..52.35099853609036)
-  lng = rand(4.753977119685295..4.998079607423506)
+  lat = rand(52.27084174076559..52.35099853609036)
+  lng = rand(4.740825502234578..4.998079607423506)
   addresses << Geocoder.search([lat, lng]).first.address
 end
 
-puts "Creating 5 users...\n"
+puts "Creating 10 users...\n"
 
 users = 5.times.each_with_object([]) do |index, arr|
   arr << user = User.create!(

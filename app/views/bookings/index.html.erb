@@ -42,7 +42,7 @@
 
       <div class="toy_picture_container">
         <% current_user.toys.each do |toy| %>
-          <%= link_to toy_path(toy), id: 'toy' do %>
+          <%= link_to toy_path(toy) do %>
             <%= cl_image_tag toy.photo.key, class: "my_toys_photos" %>
           <% end %>
         <% end %>
@@ -79,7 +79,8 @@
                       update_status_booking_path(booking, { booking: { status: 'declined' },  } ),
                       method: :patch,
                       data: { confirm: "Are you sure?" },
-                      class: 'cancel-booking'
+                      class: 'cancel-booking',
+                      remote: true
                       %>
                   <%= link_to "Update", edit_booking_path(booking) %>
                 </div>
@@ -114,7 +115,7 @@
 
                   <div class="btn-on-the-side">
                       <h5> Accepted </h5>
-                      <%= link_to "Cancel", update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'cancel-booking' %>
+                      <%= link_to "Cancel", update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'cancel-booking', remote: true %>
                   </div>
               </div>
               <div class="comment-link">
