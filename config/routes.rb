@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/contact', to: 'pages#contact'
-  resources :toys, only: [:index, :new, :create, :show] do
+  resources :toys, only: [:index, :new, :create, :show, :edit, :update] do
     resources :bookings, only: [:new, :create]
   end
 
