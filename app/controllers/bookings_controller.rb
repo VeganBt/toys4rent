@@ -15,20 +15,26 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @toy = Toy.find(params[:toy_id])
     @booking.toy = @toy
-    if @booking.save
-      redirect_to bookings_path
+    if available?
+      if @booking.save
+        redirect_to bookings_path
+      else
+        render :new
+      end
     else
+      flash.now.alert = "Sorry! Toy is not available for these dates. Please choose another date range."
       render :new
     end
+
   end
 
   def show
   end
 
-  def destroy
-    @booking.destroy
-    redirect_to root_path # TODO: change this to the correct path
-  end
+  # def destroy
+  #   @booking.destroy
+  #   redirect_to root_path # TODO: change this to the correct path
+  # end
 
   def edit
   end
@@ -52,8 +58,11 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-
     redirect_to bookings_path
+  end
+
+  def available?
+    Booking.where("start_date <= ? AND end_date >= ? AND toy_id = #{@toy.id}", @booking.end_date, @booking.start_date).none?
   end
 
   private
