@@ -14,7 +14,7 @@ end_dates = dates.map { |date| date + 4 }
 # Generate some REAL addresses
 addresses = []
 20.times do
-  lat = rand(52.27084174076559..52.35099853609036)
+  lat = rand(52.27084174076559..52.416610495689376)
   lng = rand(4.740825502234578..4.998079607423506)
   addresses << Geocoder.search([lat, lng]).first.address
 end
@@ -49,7 +49,7 @@ end
 print "Creating toys..."
 toys = []
 
-16.times do |index|
+25.times do |index|
   toy = Toy.new(
     name: "#{Faker::Games::Pokemon.name} toy",
     description: Faker::Lorem.paragraph,
@@ -70,7 +70,7 @@ end
 # Create some bookings
 puts ""
 puts "Creating bookings..."
-15.times do
+30.times do
   booking = Booking.new(
     start_date: dates.sample,
     end_date: end_dates.sample
