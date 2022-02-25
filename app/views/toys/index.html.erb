@@ -18,7 +18,7 @@
 
     <div class="cards">
       <% @toys.each do |toy| %>
-        <%= link_to toy_path(toy), id: 'toy' do %>
+        <%= link_to toy_path(toy), class: 'toy' do %>
           <div class="card-toy">
             <%= cl_image_tag toy.photo.key, class: "toy_photo" if toy.photo.key%>
             <div class="card-toy-infos">
