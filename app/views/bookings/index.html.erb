@@ -66,30 +66,35 @@
           </div>
 
           <% @user.bookings.each do |booking| %>
-            <div class="card-product">
+            <div class="total-card">
+              <div class="card-product">
 
-              <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+                <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
 
-              <div class="card-text">
-                <h5><%= booking.toy.name %></h5>
-                <p>Status: <%= booking.status %> </p>
-                <p>Start date: <%=booking.start_date.strftime("%D") %> </p>
-                <p>End date: <%=booking.end_date.strftime("%D")%> </p>
+                <div class="card-text">
+                  <h5><%= booking.toy.name %></h5>
+                  <p>Status: <%= booking.status %> </p>
+                  <p>Start date: <%=booking.start_date.strftime("%D") %> </p>
+                  <p>End date: <%=booking.end_date.strftime("%D")%> </p>
+                </div>
+
+                <div class="btn-on-the-side">
+                  <%= link_to "Cancel",
+                      update_status_booking_path(booking, { booking: { status: 'declined' },  } ),
+                      method: :patch,
+                      data: { confirm: "Are you sure?" },
+                      class: 'cancel-booking'
+                      %>
+                  <%= link_to "Update", edit_booking_path(booking) %>
+                </div>
               </div>
-
-              <div class="btn-on-the-side">
-                <%= link_to "Cancel",
-                    update_status_booking_path(booking, { booking: { status: 'declined' },  } ),
-                    method: :patch,
-                    data: { confirm: "Are you sure?" },
-                    class: 'cancel-booking'
-                     %>
-                <%= link_to "Update", edit_booking_path(booking) %>
+              <div class="comment-link">
+                View comment
+                <div class="popup"><i><%= booking.message %></i></div>
               </div>
-
-          </div>
-        <%end %>
-      </div>
+            </div>
+          <%end %>
+        </div>
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-4">
@@ -101,19 +106,25 @@
 
         <% @user.toys.each do |toy| %>
           <% toy.bookings.where( status: 'accepted').each do |booking| %>
-            <div class="card-product">
-              <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
-                <div class="card-text">
-                  <h5><%= booking.toy.name %></h5>
-                  <p> By: <%=booking.user.first_name%> <%=booking.user.last_name%>
-                  <p> From: <%= booking.start_date.strftime("%D") %> </p>
-                  <p> To: <%= booking.end_date.strftime("%D") %> </p>
-                </div>
+            <div class="total-card">
+              <div class="card-product">
+                <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+                  <div class="card-text">
+                    <h5><%= booking.toy.name %></h5>
+                    <p> By: <%=booking.user.first_name%> <%=booking.user.last_name%>
+                    <p> From: <%= booking.start_date.strftime("%D") %> </p>
+                    <p> To: <%= booking.end_date.strftime("%D") %> </p>
+                  </div>
 
-                <div class="btn-on-the-side">
-                    <h5> Accepted </h5>
-                    <%= link_to "Cancel", update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'cancel-booking' %>
-                </div>
+                  <div class="btn-on-the-side">
+                      <h5> Accepted </h5>
+                      <%= link_to "Cancel", update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'cancel-booking' %>
+                  </div>
+              </div>
+              <div class="comment-link">
+                View comment
+                <div class="popup"><i><%= booking.message %></i></div>
+              </div>
             </div>
           <%end %>
         <%end %>
@@ -128,22 +139,27 @@
           </div>
           <% @user.toys.each do |toy| %>
             <% toy.bookings.where( status: 'pending').each do |booking| %>
-              <div class="card-product">
-                <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
-                  <div class="card-text">
-                    <h5><%= booking.toy.name %></h5>
-                    <p> By: <%=booking.user.first_name%> <%=booking.user.last_name%>
-                    <p><a href="" id="comment-link">View comment: </a><p>
-                      <div id="pop-up"><%= booking.message %></div>
-                    <p> From: <%= booking.start_date.strftime("%D") %> </p>
-                    <p> To: <%= booking.end_date.strftime("%D") %> </p>
-                  </div>
+              <div class="total-card">
+                <div class="card-product">
+                  <%= cl_image_tag booking.toy.photo.key, class: "toy_photo" %>
+                    <div class="card-text">
+                      <h5><%= booking.toy.name %></h5>
+                      <p> By: <%=booking.user.first_name%> <%=booking.user.last_name%>
+                      <p> From: <%= booking.start_date.strftime("%D") %> </p>
+                      <p> To: <%= booking.end_date.strftime("%D") %> </p>
+                    </div>
 
-                  <div class="btn-on-the-side">
-                      <%= link_to icon('fas', 'check'), update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, class: 'btn btn-flat'%>
-                      <%= link_to icon('fas', 'ban'), update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'btn btn-gradient'%>
-                  </div>
+                    <div class="btn-on-the-side">
+                        <%= link_to icon('fas', 'check'), update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, class: 'btn btn-flat'%>
+                        <%= link_to icon('fas', 'ban'), update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, data: { confirm: "Are you sure?" }, class: 'btn btn-gradient'%>
+                    </div>
+                </div>
+                <div class="comment-link">
+                  View comment
+                  <div class="popup"><i><%= booking.message %></i></div>
+                </div>
               </div>
+
             <%end %>
           <%end %>
       </div>
